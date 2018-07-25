@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Jumbotron, FormControl } from "react-bootstrap";
 import AsyncButton from 'react-async-button';
-const IPFS = require('ipfs');
+var ipfsAPI = require('ipfs-api')
 
 
 class Download extends Component {
@@ -19,11 +19,11 @@ class Download extends Component {
 
     getFile = (e) => {
         e.preventDefault();
-        const node = new IPFS();
-
-        node.on('ready', () => {
+        var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
+        node.swarm.peers((err, peerInfos) => console.log(err,peerInfos))
 
             node.files.cat(this.state.fileHash, (err, data) => {
+                console.log(err,data,"hereeee")
                 if (err) { console.log(err) }
 
                 console.log('\nFile content:')
@@ -36,7 +36,6 @@ class Download extends Component {
                 element.download = "myFile.txt";
                 element.click();
             })
-        });
 
 
     }

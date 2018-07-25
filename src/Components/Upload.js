@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Jumbotron } from "react-bootstrap";
 import ReactFileReader from 'react-file-reader';
 
-const IPFS = require('ipfs');
+var ipfsAPI = require('ipfs-api')
 
 
 class Upload extends Component {
@@ -17,9 +17,8 @@ class Upload extends Component {
     handleFiles = files => {
         var reader = new FileReader();
         reader.onload = (e) => {
-            const node = new IPFS();
+            var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
             console.log(reader)
-            node.on('ready', (ver) => {
                 node.files.add({
                     path: 'file',
                     content: Buffer.from(reader.result)
@@ -41,7 +40,7 @@ class Upload extends Component {
                         console.log(data.toString())
                     })
                 })
-            })
+            
 
         }
         reader.readAsText(files[0]);
