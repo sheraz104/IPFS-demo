@@ -19,7 +19,7 @@ class Download extends Component {
 
     getFile = (e) => {
         e.preventDefault();
-        var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
+        var node = ipfsAPI('/ip4/31.220.60.94/tcp/5001')
         node.swarm.peers((err, peerInfos) => console.log(err,peerInfos))
 
             node.files.cat(this.state.fileHash, (err, data) => {

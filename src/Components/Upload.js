@@ -17,7 +17,7 @@ class Upload extends Component {
     handleFiles = files => {
         var reader = new FileReader();
         reader.onload = (e) => {
-            var node = ipfsAPI('/ip4/127.0.0.1/tcp/5001')
+            var node = ipfsAPI('/ip4/31.220.60.94/tcp/5001')
             console.log(reader)
                 node.files.add({
                     path: 'file',
