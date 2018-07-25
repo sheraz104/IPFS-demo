@@ -61,7 +61,7 @@ class Upload extends Component {
                     <div>
                         <div>{this.state.uploadedStatus}</div>
                         <br />
-                        <ReactFileReader handleFiles={this.handleFiles} fileTypes={'.csv'}>
+                        <ReactFileReader handleFiles={this.handleFiles} fileTypes={'*'}>
                             <button className='btn'>Upload</button>
                         </ReactFileReader>
                     </div>
